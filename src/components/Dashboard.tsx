@@ -7,6 +7,7 @@ import Settings from './Settings';
 import LessonRow from './LessonRow';
 import Billing from './Billing';
 import Profile from './Profile';
+import CourseCatalog from './CourseCatalog';
 
 const mockCourses = [
   {
@@ -154,8 +155,10 @@ export default function Dashboard() {
     setActiveIcon(icon);
     if (icon === 'grid') {
       setActiveView('overview');
-    } else if (icon === 'settings') { 
+    } else if (icon === 'settings') {
       setActiveView('settings');
+    } else if (icon === 'folder') {
+      setActiveView('catalog');
     }
   };
 
@@ -408,12 +411,14 @@ export default function Dashboard() {
                 </motion.div>
               </motion.div>
             </>
+          ) : activeView === 'catalog' ? (
+            <CourseCatalog />
           ) : activeView === 'billing' ? (
             <Billing />
           ) : activeView === 'profile' ? (
             <Profile />
           ) : activeView === 'settings' ? (
-            <Settings />      
+            <Settings />
           ) : null}
         </motion.div>
       </div>
